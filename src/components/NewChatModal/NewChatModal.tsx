@@ -43,7 +43,6 @@ function formatPhone(value: string) {
   return result;
 }
 
-
 export function NewChatModal({
   phone,
   onPhoneChange,
@@ -70,7 +69,7 @@ export function NewChatModal({
           id="phone"
           value={phone}
           onChange={(event) => onPhoneChange(formatPhone(event.target.value))}
-          placeholder="+7 999 123-45-67"
+          placeholder="+7 999 999-99-99"
           autoFocus
         />
 

@@ -1,75 +1,102 @@
-# React + TypeScript + Vite
+# MAX Messenger
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Веб-мессенджер на React с интеграцией GREEN-API для отправки и получения текстовых сообщений через WhatsApp.
 
-Currently, two official plugins are available:
+Проект выполнен в рамках тестового задания на должность - Фронтенд разработчик React.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Возможности
 
-## React Compiler
+* подключение к GREEN-API по `idInstance` и `apiTokenInstance`;
+* проверка состояния инстанса;
+* создание чата по номеру телефона;
+* маска и базовая валидация номера телефона;
+* отправка текстовых сообщений;
+* получение входящих сообщений через long polling;
+* отображение истории сообщений;
+* поиск по чатам;
+* сохранение чатов и сообщений в `localStorage`;
+* сохранение данных подключения между перезагрузками;
+* выход из аккаунта;
+* адаптация интерфейса под стиль веб-мессенджера MAX.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Стек
 
-## Expanding the ESLint configuration
+* React
+* TypeScript
+* Vite
+* Axios
+* CSS
+* GREEN-API
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Запуск проекта
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+Установить зависимости:
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+Запустить development-сервер:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+npm run dev
 ```
+
+После запуска открыть адрес, который будет указан Vite в терминале.
+
+## Production-сборка
+
+Проверка TypeScript и сборка проекта:
+
+```bash
+npm run build
+```
+
+## Подключение GREEN-API
+
+При первом запуске необходимо указать:
+
+* `ID Instance`
+* `API Token Instance`
+
+Данные сохраняются локально в браузере и используются для последующих подключений.
+
+Для работы с сообщениями GREEN-API должен быть авторизован в WhatsApp.
+
+## Использование
+
+1. Введите данные GREEN-API.
+2. Подключитесь к инстансу.
+3. Нажмите `+` в списке чатов.
+4. Введите номер телефона.
+5. Откройте созданный чат.
+6. Отправьте сообщение.
+7. Ответное сообщение будет получено через GREEN-API и отображено в интерфейсе.
+
+## Структура проекта
+
+```text
+src/
+├── api/
+│   └── greenApi.ts
+├── components/
+│   ├── ConnectionForm/
+│   ├── Conversation/
+│   ├── NewChatModal/
+│   └── Sidebar/
+├── types/
+│   └── chat.ts
+├── App.tsx
+├── App.css
+└── main.tsx
+```
+
+## Примечание
+
+В рамках тестового задания требовалась интеграция с MAX через GREEN-API. Для демонстрации работы API использована доступная интеграция GREEN-API с WhatsApp. Функциональность отправки и получения текстовых сообщений реализована через соответствующие методы GREEN-API.
+
+## Автор
+
+Иван Мордяшев
+
+GitHub: https://github.com/MiverMor
