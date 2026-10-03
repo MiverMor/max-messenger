@@ -97,6 +97,8 @@ src/
 
 ## Автор
 
-Иван Мордяшев
+Иван Мордяшев +79041425760
+Telegram: @IvMive
 
-GitHub: https://github.com/MiverMor
+
+GitHub: https://github.com/MiverMor/max-messenger
